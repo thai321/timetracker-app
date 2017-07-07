@@ -2,7 +2,7 @@
 
   <% if @post.errors.any? %>
     <% @post.errors.full_messages.each do |msg| %>
-      <%= js add_gritter(msg, :title => "Time Tracker App Notification", :sticky => false) %>
+      <%= js add_gritter(msg, :title => "Time Tracker App Notification", :sticky => false, :time => 2500 ) %>
     <% end %>
   <% end %>
 
