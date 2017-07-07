@@ -6,6 +6,11 @@ require 'spec_helper'
 require 'rspec/rails'
 require 'capybara/rails'
 
+# able to signing in
+# provide from devise
+include Warden::Test::Helpers
+Warden.test_mode!
+
 ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|

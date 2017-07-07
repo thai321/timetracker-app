@@ -1,4 +1,6 @@
-## TimeTracker app
+# TimeTracker app
+
+## Key requirement: company needs documentation that salaried employees did or did not get overtime each week
 
 ## Models
 - Post -> dta:data rationale:text
@@ -13,3 +15,6 @@
 
 ## UI:
 - Bootstrap -> formatting
+
+## Refactor TODOS:
+- Refactor user association integration test in post_spec
