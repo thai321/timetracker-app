@@ -41,3 +41,4 @@ gem 'jquery-rails', '~> 4.0', '>= 4.0.5'
 gem 'gritter', '~> 1.2' # notification
 gem 'administrate', github: 'thoughtbot/administrate' # Admin
 gem 'bourbon' # Admin
+gem 'pundit', '~> 1.1' # Permission
