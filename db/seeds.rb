@@ -12,3 +12,11 @@ puts "1 User created"
 end
 
 puts "100 Posts have been created"
+
+
+AdminUser.create(email: "admin@admin.com",
+                    first_name: "admin",
+                    last_name: "admin",
+                    password: "123456",
+                    password_confirmation: "123456"
+                    )
