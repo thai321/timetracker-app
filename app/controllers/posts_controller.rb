@@ -19,10 +19,12 @@ class PostsController < ApplicationController
     end
   end
 
-  def edit
+  def edit # only user can edit their own post with pundit gem
+    authorize @post # from /policies/post_policy.rb
   end
 
-  def update
+  def update #only user can update their own post with pundit gem
+    authorize @post # from /policies/post_policy.rb
     if @post.update(post_params)
       redirect_to @post, notice: 'Your post was updated successfully'
     else
