@@ -3,6 +3,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.post_by(current_user)
+    # @posts = Post.includes(:user).where(user: current_user) # much faster and better SQL
   end
 
   def new

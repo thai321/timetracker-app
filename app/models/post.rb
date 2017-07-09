@@ -4,5 +4,6 @@ class Post < ApplicationRecord
   validates_presence_of :date, :rationale
 
   # get the posts associate with the user
-  scope :post_by, -> (user) { where(user_id: user.id) }
+  # much faster and better query SQL
+  scope :post_by, -> (current_user) { includes(:user).where(user: current_user) }
 end
