@@ -22,11 +22,25 @@ describe 'navigate' do
     it 'has a list of posts' do
       # post1 = Post.create(date: Date.today, rationale: "Post1", user: @user)
       # post1 = FactoryGirl.create(:post)
-      post1 = FactoryGirl.build_stubbed(:post)
-      post2 = FactoryGirl.create(:second_post)
+      post1 = FactoryGirl.build_stubbed(:post, user: @user)
+      post2 = FactoryGirl.create(:second_post, user: @user)
       visit posts_path
       expect(page).to have_content(/Post1|content/)
     end
+
+    it 'has a scope so that only post creators can see their posts' do
+      post1 = FactoryGirl.build_stubbed(:post, user: @user)
+      post2 = FactoryGirl.build_stubbed(:second_post, user_id: @user.id)
+
+      other_user = FactoryGirl.create(:other_user)
+      post_from_other_user = FactoryGirl.create(:post,
+      rationale: "This post shouldn't be seen" , user: other_user)
+
+      visit posts_path
+
+      expect(page).to_not have_content(/This post shouldn't be seen/)
+    end
+
   end
 
   describe 'New' do
@@ -40,7 +54,7 @@ describe 'navigate' do
 
   describe 'delete' do
     it 'can be deleted' do
-      @post = FactoryGirl.create(:post)
+      @post = FactoryGirl.create(:post, user: @user)
       visit posts_path
 
       click_link("delete_post_#{@post.id}_from_index")
@@ -81,7 +95,7 @@ describe 'navigate' do
     end
 
     # Base case, this is pass, but we don't need it
-    xit 'can be reached by clicking edit on index page' do
+    it '[Base case] can be reached by clicking edit on index page' do
       visit posts_path
       click_link("edit_#{@post.id}") # looking for an id
       expect(page.status_code).to eq(200)
@@ -100,7 +114,7 @@ describe 'navigate' do
     it 'cannot be edited by a non-authorized user' do
       logout(:user)
 
-      non_authorized_user = FactoryGirl.create(:non_authorized_user)
+      non_authorized_user = FactoryGirl.create(:other_user)
       login_as(non_authorized_user, :scope => :user)
 
       visit edit_post_path(@post)
