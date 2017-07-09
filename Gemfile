@@ -8,7 +8,7 @@ end
 
 gem 'rails', '~> 5.1.2'
 gem 'pg', '~> 0.18'
-gem 'puma', '~> 3.7'
+# gem 'puma', '~> 3.7'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 
@@ -42,3 +42,4 @@ gem 'gritter', '~> 1.2' # notification
 gem 'administrate', github: 'thoughtbot/administrate' # Admin
 gem 'bourbon' # Admin
 gem 'pundit', '~> 1.1' # Permission
+gem 'puma', '~> 3.9', '>= 3.9.1' # Web Server
