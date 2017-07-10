@@ -43,3 +43,4 @@ gem 'administrate', github: 'thoughtbot/administrate' # Admin
 gem 'bourbon' # Admin
 gem 'pundit', '~> 1.1' # Permission
 gem 'puma', '~> 3.9', '>= 3.9.1' # Web Server
+gem 'twilio-ruby', '~> 4.13' # text, phone API service

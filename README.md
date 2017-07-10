@@ -6,6 +6,7 @@
 - Post -> dta:data rationale:text
 - User -> Devise
 - AdminUser -> STI
+- AuditLog
 
 ## Features:
 - Approval Workflow
