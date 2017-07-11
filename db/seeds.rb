@@ -22,3 +22,9 @@ AdminUser.create(email: "admin@admin.com",
                     password_confirmation: "123456",
                     phone: "4086085237"
                     )
+
+
+100.times do
+  AuditLog.create!(user: User.last, status: 0, start_date: (Date.today - 6.days))
+end
+puts "100 auditlogs have been created"
