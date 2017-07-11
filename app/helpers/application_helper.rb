@@ -1,5 +1,5 @@
 module ApplicationHelper
-  def admin_types
+  def admin_types # only avaible for the views
     ['AdminUser', 'Manager'] # Mananger is just an example
   end
 

@@ -8,6 +8,10 @@ class ApplicationController < ActionController::Base
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
+  def admin_types # avaible only for controllers, not view
+    ['AdminUser', 'Manager'] # Mananger is just an example
+  end
+
   private
 
   def user_not_authorized # if not authorized then redirect to root page
