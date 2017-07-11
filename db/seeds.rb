@@ -26,7 +26,8 @@ AdminUser.create(email: "admin@admin.com",
                     )
 
 
-100.times do
-  AuditLog.create!(user: @user, status: 0, start_date: (Date.today - 6.days))
-end
-puts "100 auditlogs have been created"
+AuditLog.create!(user: @user, status: 0, start_date: (Date.today - 6.days))
+
+AuditLog.create!(user: @user, status: 0, start_date: (Date.today - 13.days))
+AuditLog.create!(user: @user, status: 0, start_date: (Date.today - 20.days))
+puts "3 auditlogs have been created"

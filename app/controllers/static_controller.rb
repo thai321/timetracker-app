@@ -8,7 +8,7 @@ class StaticController < ApplicationController
 
       @recent_audit_items = AuditLog.includes(:user).last(10)
     else
-      #something else
+      @pending_audit_confirmations = current_user.audit_logs
     end
   end
 end
