@@ -10,7 +10,7 @@ FactoryGirl.define do
     last_name "nguyen"
     password "123456"
     password_confirmation "123456"
-    phone "555555555"
+    phone "5555555555"
   end
 
 
@@ -20,7 +20,7 @@ FactoryGirl.define do
     last_name "User"
     password "123456"
     password_confirmation "123456"
-    phone "555555555"
+    phone "5555555555"
   end
 
   factory :other_user, class: "User" do
@@ -29,6 +29,6 @@ FactoryGirl.define do
     last_name "Authorized"
     password "123456"
     password_confirmation "123456"
-    phone "555555555"
+    phone "5555555555"
   end
 end
