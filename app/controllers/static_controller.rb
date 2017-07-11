@@ -8,7 +8,7 @@ class StaticController < ApplicationController
 
       @recent_audit_items = AuditLog.includes(:user).last(10)
     else
-      @pending_audit_confirmations = current_user.audit_logs
+      @pending_audit_confirmations = AuditLog.includes(:user).where(user: current_user).pending
     end
   end
 end

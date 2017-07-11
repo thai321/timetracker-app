@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :audit_logs, expect: [:new, :edit, :destroy]
+  resources :audit_logs, expect: [:new, :edit, :destroy] do
+    member do
+      get :confirm # confirm action in audit_logs_controller
+    end
+  end
 
   namespace :admin do
     resources :users
