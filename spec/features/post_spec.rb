@@ -22,7 +22,7 @@ describe 'navigate' do
     end
 
     it 'has a title of Posts' do
-      expect(page).to have_content(/Hello from Posts Index/)
+      expect(page).to have_content(/Posts/)
     end
 
     it 'has a list of posts' do

@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   def index
-    @posts = Post.post_by(current_user)
+    @posts = Post.post_by(current_user).page(params[:page]).per(10)
     # @posts = Post.includes(:user).where(user: current_user) # much faster and better SQL
   end
 
