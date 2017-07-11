@@ -22,8 +22,8 @@
 ## TODOS:
 - Add Full name for user
 - Refactor user association integration test in post_spec
-- Refactor posts/_form for admin user with status
+- Refactor posts/_ form for admin user with status
 - Integrate validation for phone attr in User:
-  # No spaces or dashes
-  # exactly 10 characters
-  # all characters have to be a number
+  - No spaces or dashes
+  - exactly 10 characters
+  - all characters have to be a number
