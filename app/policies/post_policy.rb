@@ -1,4 +1,9 @@
 class PostPolicy < ApplicationPolicy
+
+  def approve?
+    admin?
+  end
+
   def update?
     #allow admin
     return true if post_approved? && admin?

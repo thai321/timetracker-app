@@ -7,5 +7,5 @@ class Post < ApplicationRecord
 
   # get the posts associate with the user
   # much faster and better query SQL
-  scope :post_by, -> (current_user) { includes(:user).where(user: current_user) }
+  scope :post_by, -> (current_user) { includes(:user).where(user_id: current_user.id) }
 end

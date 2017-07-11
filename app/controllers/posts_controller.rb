@@ -1,9 +1,15 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_post, only: [:show, :edit, :update, :destroy, :approve]
 
   def index
     @posts = Post.post_by(current_user).page(params[:page]).per(10)
     # @posts = Post.includes(:user).where(user: current_user) # much faster and better SQL
+  end
+
+  def approve #in the route.rb,create an action under post resource
+    authorize @post
+    @post.approved! # member do { get :approve }
+    redirect_to root_path, notice: "This post has been approved"
   end
 
   def new
