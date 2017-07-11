@@ -8,9 +8,13 @@
   	<li class= <%= active?(root_path) %> >
   		<%= link_to "Home", root_path %>
   	</li>
+
   	<li class= '<%= active?(posts_path) %>' >
   		<%= link_to "Time Entries", posts_path %>
   	</li>
+
+    <%= render 'shared/audit_log_tab' if policy(AuditLog).index? %>
+
 
     <li class= '<%= active?(new_post_path) %>' >
   		<%= link_to "Add New Entries", new_post_path,
