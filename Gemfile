@@ -46,3 +46,4 @@ gem 'puma', '~> 3.9', '>= 3.9.1' # Web Server
 gem 'twilio-ruby', '~> 4.13' # text, phone API service
 gem 'dotenv-rails', :groups => [:development, :test]
 gem 'kaminari', '~> 1.0', '>= 1.0.1' # pagination
+gem 'newrelic_rpm'
