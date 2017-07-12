@@ -5,7 +5,7 @@ describe 'navigate' do
   let!(:post) {
     #use let! to force the method's invocation before each example
     FactoryGirl.create(:post, user: user)
-    # Post.create(date: Date.today, rationale: "Rationable", user_id: user.id)
+    # Post.create(date: Date.today, work_performed: "Rationable", user_id: user.id)
   }
 
   before do
@@ -35,8 +35,8 @@ describe 'navigate' do
     it 'has a scope so that only post creators can see their posts' do
       other_user = FactoryGirl.create(:other_user)
       post_from_other_user = FactoryGirl.create(:post,
-      rationale: "This post shouldn't be seen" , user: other_user,
-      overtime_request: 3.5)
+      work_performed: "This post shouldn't be seen" , user: other_user,
+      daily_hours: 3.5)
 
       visit posts_path
 
@@ -81,21 +81,21 @@ describe 'navigate' do
 
     it 'can be created from new form page' do
       fill_in 'post[date]', with: Date.today
-      fill_in 'post[rationale]', with: "Some rationale"
-      fill_in 'post[overtime_request]', with: 4.5
+      fill_in 'post[work_performed]', with: "Some work_performed"
+      fill_in 'post[daily_hours]', with: 4.5
       # click_on "Save"
 
-      # expect(page).to have_content("Some rationale")
+      # expect(page).to have_content("Some work_performed")
       expect { click_on "Save" }.to change(Post, :count).by(1)
     end
 
     it 'will have a user associated it' do
       fill_in 'post[date]', with: Date.today
-      fill_in 'post[rationale]', with: "User_Association"
-      fill_in 'post[overtime_request]', with: 4.5
+      fill_in 'post[work_performed]', with: "User_Association"
+      fill_in 'post[daily_hours]', with: 4.5
       click_on "Save"
 
-      expect(User.last.posts.last.rationale).to eq("User_Association")
+      expect(User.last.posts.last.work_performed).to eq("User_Association")
     end
   end
 
@@ -112,7 +112,7 @@ describe 'navigate' do
       visit edit_post_path(post)
 
       fill_in 'post[date]', with: Date.today
-      fill_in 'post[rationale]', with: "Edited content"
+      fill_in 'post[work_performed]', with: "Edited content"
       click_on "Save"
 
       expect(page).to have_content("Edited content")

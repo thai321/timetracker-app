@@ -3,7 +3,7 @@
 ## Key requirement: company needs documentation that salaried employees did or did not get overtime each week
 
 ## Models
-- Post -> dta:data rationale:text
+- Post -> dta:data work_performed:text
 - User -> Devise
 - AdminUser -> STI
 - AuditLog
