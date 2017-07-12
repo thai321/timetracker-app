@@ -25,11 +25,15 @@ describe 'navigate' do
       expect(page).to have_content(/Posts/)
     end
 
-    it 'has a list of posts' do
-      post1 = FactoryGirl.build_stubbed(:post)
-      post2 = FactoryGirl.create(:second_post)
+    it 'has a list of posts associate to the same user' do
+      post1 = FactoryGirl.build_stubbed(:post, user: user)
+      post2 = FactoryGirl.create(:second_post, user: user)
+
       visit posts_path
-      expect(page).to have_content(/Post|content/)
+
+      expect(post1.user_id).to eq(post2.user_id)
+      expect(page).to have_content(post1.work_performed)
+      expect(page).to have_content(post2.work_performed)
     end
 
     it 'has a scope so that only post creators can see their posts' do
