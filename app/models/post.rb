@@ -15,6 +15,6 @@ class Post < ApplicationRecord
   def update_audit_log # where returns an array --> call last
     audit_log = AuditLog.includes(:user).where(user_id: self.user_id,
                         start_date: (self.date - 7.days..self.date)).last
-    audit_log.confirmed!
+    audit_log.confirmed! if audit_log
   end
 end
