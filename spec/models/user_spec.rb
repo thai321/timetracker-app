@@ -44,4 +44,15 @@ RSpec.describe User, type: :model do
     end
   end
 
+  describe 'relationship between admins and employees' do
+    it 'allows for admins to be associated with multiple employees (managers)' do
+      employee_1 = FactoryGirl.create(:user)
+      employee_2 = FactoryGirl.create(:user)
+      admin = FactoryGirl.create(:admin_user)
+      Hand.create!(user: admin, hand: employee_1)
+      Hand.create!(user: admin, hand: employee_2)
+      expect(admin.hands.count).to eq(2)
+    end
+  end
+
 end

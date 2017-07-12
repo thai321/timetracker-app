@@ -2,6 +2,10 @@ class User < ApplicationRecord
   has_many :posts
   has_many :audit_logs
 
+  # just know that which manager has which employees
+  has_many :hands_associations, class_name: 'Hand'
+  has_many :hands, through: :hands_associations
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
